@@ -1,0 +1,21 @@
+{% load static %}
+{% load crispy_forms_tags %}
+<header>
+    <div class="headerInicio">
+        <div class="contenedorHeader">
+          <div class="cuadroH1 div-padre ">
+            <div class="div-hijo">
+              <img class="logoH1 mx-auto m-4" src="{% static 'img/png/LOGO 16.png' %} " alt="" />
+            </div>
+          </div>
+          <div class="cuadroH2 tituloNav">
+            <h1 class="textoH3">Unidad Productiva <br />Tejidos y Variedades Tota</h1>
+          </div>
+          
+          <div class="cuadroHI1-2">
+            <div class="cuadroH3"><a href="{% url 'usuario-login' %}"><input type="button" class="btn botonH3 btn-light" value="Ingresar"></a>
+          </div>
+        </div>
+      </div>   
+    
+</header>

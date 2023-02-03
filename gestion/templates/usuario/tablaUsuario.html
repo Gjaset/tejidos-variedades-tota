@@ -1,0 +1,102 @@
+{% extends 'partials/body.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %} usuarios {% endblock title %}
+{% block contenido %}
+
+<main class="mainU">
+<div class="contenedorMainU mx-auto ">
+  <div class="navTabla">
+    <div class="d-flex flex-row w-100 breadNav">
+      <div>
+        <p class="txtMainI">Usuario</p>
+        
+      </div>
+      <div>
+        <nav aria-label="breadcrumb ">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="{% url 'inicio' %}">Inicio</a></li>
+          <li class="breadcrumb-item"><a href="{% url 'usuario-tablaUsuario' %}">Usuario</a></li>
+        </ol>
+        </nav>
+      </div>
+    </div>
+   
+    <div class="tablaProducto" > 
+      <table class="table bg-white table-bordered results" id="tabla_usuario">
+            <thead class="theadtable">
+              <tr class="text-white">
+                <th scope="col">Rol</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Apellido</th>
+                <th scope="col">Tipo documento</th>
+                <th scope="col">Documento</th>
+                <th scope="col">Celular</th>
+                <th scope="col">Estado</th>
+                <th scope="col">Opciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for tusuario in tusuarios %}
+              {% if tusuario.estado == "Activo" %}
+              <tr>
+                <td>{{tusuario.rol}}</td>
+                <td>{{tusuario.Unombre}}</td>
+                <td>{{tusuario.apellido}}</td>
+                <td>{{tusuario.tipo_documento}}</td>
+                <td>{{tusuario.documento}}</td>
+                <td>{{tusuario.celular}}</td>
+                <td>{{tusuario.estado}}</td>
+                
+                <td>
+                    <a href="{% url 'usuario-verusuario' tusuario.Uid %}"><svg src="img/png/eye.svg"   fill="currentColor" class=" opcionesTabla bi bi-eye" viewBox="0 0 16 16">
+                      <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"/>
+                      <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/>
+                      <title> Ver detalles de usuario </title> 
+                    </svg>
+                    </a>
+                
+                  <a href="{% url 'usuario-editarusuario' tusuario.Uid %}"><svg src="img/png/lapiz.svg"  fill="currentColor" class="opcionesTabla bi bi-pencil-square" viewBox="0 0 16 16">
+                    <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                    <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                    <title> Editar usuario </title> 
+                    </svg>
+                  </a>
+                <a href="{% url 'usuario-usuario-eliminar' tusuario.Uid %}"><svg xmlns="http://www.w3.org/2000/svg"  fill="currentColor" class=" opcionesTabla bi bi-slash-circle" viewBox="0 0 16 16">
+                  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                  <path d="M11.354 4.646a.5.5 0 0 0-.708 0l-6 6a.5.5 0 0 0 .708.708l6-6a.5.5 0 0 0 0-.708z"/>
+                <title> Desactivar usuario </title>
+              </svg>
+                  
+                </svg>
+                {% endif %}
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+      </table>
+    </div>
+    <div class="iconosOpcion">
+      <div class="agreproducto">
+        <a href="{% url 'usuario-crearUsuario' %}"><img class="iconos-tabla" alt="Agregar usuario" src="{% static 'img/png/plus-circle-fill.svg' %}" title="Agregar usuario"></a>
+        <p>Agregar<br>usuario</p>
+      </div>
+      <div class="tallaproducto" title="Ver usuarios inactivos">
+      <a href="{% url 'usuario-usuarioI' %}"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-eye-slash" viewBox="0 0 16 16">
+            <path d="M13.359 11.238C15.06 9.72 16 8 16 8s-3-5.5-8-5.5a7.028 7.028 0 0 0-2.79.588l.77.771A5.944 5.944 0 0 1 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.134 13.134 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755-.165.165-.337.328-.517.486l.708.709z"/>
+            <path d="M11.297 9.176a3.5 3.5 0 0 0-4.474-4.474l.823.823a2.5 2.5 0 0 1 2.829 2.829l.822.822zm-2.943 1.299.822.822a3.5 3.5 0 0 1-4.474-4.474l.823.823a2.5 2.5 0 0 0 2.829 2.829z"/>
+            <path d="M3.35 5.47c-.18.16-.353.322-.518.487A13.134 13.134 0 0 0 1.172 8l.195.288c.335.48.83 1.12 1.465 1.755C4.121 11.332 5.881 12.5 8 12.5c.716 0 1.39-.133 2.02-.36l.77.772A7.029 7.029 0 0 1 8 13.5C3 13.5 0 8 0 8s.939-1.721 2.641-3.238l.708.709zm10.296 8.884-12-12 .708-.708 12 12-.708.708z"/>
+          </svg></a> 
+          <p>Usuarios<br>inactivos</p>
+      </div>
+    </div>
+  </div>
+</div>
+</main>
+
+
+
+
+
+
+{% endblock contenido %}

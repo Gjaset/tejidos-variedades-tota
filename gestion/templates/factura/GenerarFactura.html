@@ -1,0 +1,168 @@
+{% extends 'partials/body1.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block contenido %}
+
+<div class="html">
+<header1>
+  <div class="headerInicio" style="margin-top:-25px;">
+    <div class="contenedorHeader my-5">
+      <div class="cuadroH1 div-padre ">
+        <div class="div-hijo">
+          <img class="logoH1 mx-auto " src="{% static 'img/png/LOGO 16.png' %} " alt="" />
+        </div>
+      </div>
+      <div class="">
+        <h1 style="color= black; margin-left:170px; margin-top:40px; font-size:50px!important">Unidad Productiva Tejidos y Variedades Tota</h1>
+      </div>
+  </div>
+</header1>
+
+<main1>
+  <div class="contenerdor-factura">
+    <h2 class="text-center " style="margin-top:-80px;font-size:80px">FACTURA </h2>
+    <div class="contenedor1 row p-3">
+      <div class="pdf-lugar col-md-4">
+        <div class="">
+          <h2 class="texto-1 text-center my-2">Datos del establecimiento</h2>
+        </div>
+        <div class="my-3">
+            <a class="texto-2">Dirección de establecimiento: Calle 27 #24-68</a><br>
+            <span class="texto-2">Municipio: Tota/Boyacá 152440</span><br>
+            <span class="texto-2">Correo electronico: Tejiidosyvariedadestota@gmail.com</span><br>
+            <span class="texto-2">Telefono: 3132527557</span><br>
+        </div>
+      </div>
+      <div class="pdf-id col-md-4 mx-0">
+        <div class="">
+          <table>
+            <thead class="thead-factura">
+              <tr class="">
+                <th width="280" class="text-center T-table">Factura #</th>
+                <th width="280" class="text-center T-table">Fecha</th>
+              </tr>
+            </thead>
+            <tbody class="">
+              <tr>
+                <td class="text-center B-table">{{factura.id}}</td>
+                <td class="text-center B-table">{{factura.fecha}}</td>
+              </tr>
+            </tbody>
+          </table>
+          <table class="my-5">
+            <thead class="thead-factura">
+              <tr class="">
+                <th width="280" class="text-center T-table">Rol</th>
+                <th width="280" class="text-center T-table">Tipo factura</th>
+              </tr>
+            </thead>
+            <tbody class="">
+              <tr>
+                <td class="text-center B-table">{{factura.rol.Rnombre}}</td>
+                <td class="text-center B-table">{{factura.tipofactura}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="pdf-id col-md-4 mx-0">
+        <div class="">
+          <table>
+            <thead class="">
+              <tr class="">
+                <th width="170" class="thead-factura1 text-center T-table">---</th>
+                <th width="400" class="thead-factura text-center T-table">Facturar a</th>
+              </tr>
+            </thead>
+            <tbody class="">
+              <tr>
+                <td class=" thead-factura text-center B-table ">Nombre</td>
+                <td class="text-center B-table">{{factura.usuario}} </td>
+              </tr>
+              <tr >
+                <td class="thead-factura1 text-center B-table">Número celular</td>
+                <td class="text-center B-table">{{factura.usuario.celular}} </td>
+              </tr>
+              <tr >
+                <td class="thead-factura text-center B-table">Número identificacion</td>
+                <td class="text-center B-table">{{factura.usuario.documento}} </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    
+    <div>
+      <table class="table bg-white table-bordered results" >
+          <thead style="background-color: #9e9c9c;">
+            <tr class="text-black">
+              <th scope="col">Producto</th>            
+              <th scope="col">Talla</th>   
+              <th scope="col">Marca</th>    
+              <th scope="col">Color</th>           
+              <th scope="col">Cantidad</th>
+              <th scope="col">Precio</th>
+              <th scope="col">Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for detalle in detalles %} 
+            <tr>
+              <td class="dtr-control sorting_1">{{detalle.nombre_p}}</td>
+              <td class="dtr-control sorting_1">{{detalle.producto.talla}}</td>
+              <td class="dtr-control sorting_1">{{detalle.producto.marca}}</td>
+              <td class="dtr-control sorting_1">{{detalle.producto.color}}</td>
+              <td class="dt-body-right dtr-hidden">{{detalle.cantidad_detalle}}</td>
+              <td class="dt-body-right dtr-hidden">${{detalle.precioX }}</td>
+              <td class="dt-body-right dtr-hidden">${{detalle.total }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+          <thead >
+            <tr class="text-black">
+              <th scope="col"></th>            
+              <th scope="col"></th>   
+              <th scope="col"></th>    
+              <th scope="col"></th>           
+              <th scope="col"></th>
+              <th style="background-color: #9e9c9c; font-size:30px;" scope="col">Total a pagar:</th>
+              <th style=" font-size:30px;" scope="col">${{factura.neto_pagar}}</th>
+            </tr>
+          </thead>
+        </table>
+        
+    </div>
+  </div>
+</main1>
+</div>
+<script>
+ window.onload = function Ejemplo1()
+ {
+  const $elementoParaConvertir = document.body; // <-- Aquí puedes elegir cualquier elemento del DOM
+        html2pdf()
+            .set({
+                margin: 0,
+                filename: 'documento.pdf',
+                image: {
+                    type: 'jpeg',
+                    quality: 0.98
+                },
+                html2canvas: {
+                    scale: 3, // A mayor escala, mejores gráficos, pero más peso
+                    letterRendering: true,
+                },
+                jsPDF: {
+                    unit: "in",
+                    format: "a2",
+                    orientation: 'portrait' // landscape o portrait
+                }
+            })
+            .from($elementoParaConvertir)
+            .save()
+            .catch(err => console.log(err));
+ }
+</script>
+
+
+{% endblock %}

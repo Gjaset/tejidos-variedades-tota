@@ -1,0 +1,31 @@
+<!-- Modal -->
+{% load crispy_forms_tags %}
+{% load static %}
+{% block contenido %}
+
+
+<div class="modal fade show" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
+  role="dialog" style="display: block;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Cerrar sesión</h5>
+        <a class="btn-close" data-bs-dismiss="modal" href="{% url 'inicio' %}" aria-label="Close"></a>
+      </div>
+      <div class="modal-body">
+        <form action="" method="POST">
+          {% csrf_token %}
+          {{ form|crispy }}
+      </div>
+      <div class="modal-footer">
+        <a href="{% url 'index' %}"><input type="submit" value="Salir" class="btn btn-primary" value="Cerrar sesión"></a>
+        <a class="btn btn-danger Btn-White " data-bs-dismiss="modal" href="{% url 'inicio' %}">Cancelar</a>
+        </form>
+        <div></div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal-backdrop fade show"></div>
+{% endblock contenido %}

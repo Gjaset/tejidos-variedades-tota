@@ -1,0 +1,1229 @@
+*{
+    font-family: Unna;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.filtro{ 
+    filter: invert(95%);
+
+}
+.pagado{
+    font-size: 20px;
+}
+.ojito{
+    top: -5px !important;
+    
+}
+
+.videos{
+    width: 250px;
+    height: 200px;
+}
+.container-video-padre{
+    background-color: rgba(221, 230, 255, 0.683);
+    border-radius: 50px;
+}
+.texto-video{
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+.video-ayuda{
+    font-size: 5rem;
+    text-align: center;
+    margin-bottom: 50px;
+}
+.video-ayuda1{
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: 50px;
+}
+.container-video{
+
+    text-align: center;
+    margin-top: 50px !important;
+   margin-bottom: 50px;
+}
+.colorrestaurar{
+    background-color: #ff0000b0 !important;
+}
+.crear-p{
+    padding: 50px !important;
+}
+.botonfixed{
+    position: fixed !important;
+    background-color:#ff0000b0 !important;
+    right: 0px;
+    top: 50%;
+}
+.regresar-t{
+    margin-top: -9px !important;
+}
+.botonayud{
+    position: fixed !important; 
+}
+@font-face {
+    font-family: Unna;
+    src:url('../fonts/Unna/Unna-Regular.ttf'), 
+    url('../fonts/Unna/Unna-Bold.ttf'), 
+    url('../fonts/Unna/Unna-BoldItalic.ttf'), 
+    url('../fonts/Unna/Unna-Italic.ttf') ;
+}
+label{
+    margin-left: 0px !important;
+}
+a:hover{
+    color: #000000 !important;
+}
+.iconos-tabla{
+    width: 40px;
+}
+a{
+    color: #000000 !important;
+    text-decoration: none  !important;
+}
+.img-Botton{
+    width: 40px !important;
+}
+.Btn-White{
+    color: white !important;
+}
+.breadNav{
+    justify-content: space-between;
+}
+.breadcrumb{
+    margin-top: 15px!important;
+}
+.bdnavizquierda {
+    border-radius: 6px 0px 0px 6px;
+    overflow: hidden;
+}
+.bdnavderecha {
+    border-radius: 0px 6px 6px 0px;
+    overflow: hidden;
+}
+.centrar{
+    margin: 0 auto;
+}
+.theadtable{
+    background-color:#577594 !important;
+}
+
+.table{
+    margin-bottom: 0rem !important;
+}
+.w-tableVer{
+    width: 50% !important;
+}
+.w-tabla100{
+    width: 100%;
+}
+.table>thead {
+    vertical-align: 0px !important; 
+}
+.navRedondo{
+    border-radius: 5px;
+}
+
+.buttons-pdf{
+    
+    background-color: rgb(185, 62, 62) !important;
+}
+.buttons-excel{
+    background-color: rgb(68, 116, 68) !important;
+}
+.buttons-print{
+    background-color: #f2f2f2 !important;
+}
+.borderT{
+    color: rgb(0, 0, 0);
+    border-color: #ffffff;
+}
+.bg-ver{
+    border-radius: 20px;
+    background-color: #6061635b;
+
+}
+.dataTables_wrapper .dataTables_filter input {
+    border: 1px solid #aaa;
+    border-radius: 3px;
+    padding: 7px;
+    background-color: transparent;
+    margin-left: -20px !important;
+    margin-bottom: 10px;
+}
+.font-2em{
+    font-size: 2em;
+}
+.font-4em{
+    font-size: 4em;
+}
+.padding{
+    padding: 20px 0px 70px 0px;
+}
+.tablaVer{
+    border-style: none !important;
+}
+.arreglar{
+    position: absolute;
+    inset: 0px 0px auto auto;
+    margin: 0px;
+    transform: translate(-68px 1px);
+}
+.bg-gray{
+    background-color: #98999b;
+}
+
+
+
+/*accesibilidad*/
+.f0 {
+    font-size: 0.8rem;
+  }
+  .f1 {
+    font-size: 0.9rem;
+  }
+  .f2 {
+    font-size: 1rem;
+  }
+  .f3 {
+    font-size: 1.1rem;
+  }
+  .f4 {
+    font-size: 1.2rem;
+  }
+  .f5 {
+    font-size: 1.3rem;
+  }
+  .f6 {
+    font-size: 1.4rem;
+  }
+  
+  
+
+p{
+    font-size: 1.2rem;
+}
+
+.dark-mode{
+    background-color:rgba(0, 0, 0, 0.822);
+    color:#fff;
+}
+.imgH{
+    width: 100%;
+}
+.div-padre {
+    display : flex;
+    justify-content : center;
+    align-items : center;
+}
+.div-hijo{
+    text-align: center;
+}
+/*index*/
+.header{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+    .contenedorHeader{
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .cuadroH1{
+        width: 20%;
+    }
+        .logoH1{
+            width: 60%;
+            margin-right: 100px;
+            
+        }
+        
+
+    .cuadroH2{
+        width: 60%;
+        text-align: center;
+        display: table;
+        
+    }
+    .cuadroHI1-2{
+        width: 20%;
+    }
+        .textoH2{
+            display: table-cell;
+            vertical-align: middle;
+            color: #fff;
+            font-size: 3rem !important;
+        }
+        .textoH3{
+            display: table-cell;
+            vertical-align: middle;
+            color: #fff;
+            font-size: 3rem !important;
+            margin-top: 5%;
+            
+        }
+        .botonH3{
+            float: right;
+            margin-top: 25%;
+            margin-right: 20%;
+            padding: 10px 30px !important;
+            font-size: 2rem !important;
+        }
+main{
+    width: auto;
+    background-image: url("../img/png/fondo6.png");
+    background-size: cover;
+    min-height: 60vh;
+}
+    .border-5{
+        border-radius: 5px
+    }
+    .contenedorMain{
+        width: 45%;
+        margin: 0 auto;
+    }
+    .imgCarousel{
+        margin-bottom: 20px;
+        width: 100%;
+        border-radius: 15px ;
+        
+    }
+    .marqueeTxt{
+        margin-top: 10px;
+        font-size: 3em;
+        
+    }
+
+    
+    
+footer{
+        background: #4c83fa;
+        margin: auto;
+        overflow: hidden;
+    }
+    
+    .contenedor-footer{
+        display: flex;
+        width: 90%;
+        justify-content: space-evenly;
+        margin: auto;
+        border-bottom: 1px solid #ffffff;
+    }
+    
+    .content-foo{
+        text-align: center;
+    }
+    
+    .content-foo h4{
+        color: #fff;
+        border-bottom: 3px solid #ffffff;
+        padding-bottom: 5px;
+        margin-bottom: 10px;
+    }
+    
+    .content-foo p{
+        color: rgb(255, 255, 255);
+    }
+    
+    .titulo-final{
+        text-align: center;
+        font-size: 24px;
+        margin: 20px 0 0 0;
+        color: #ffffff;
+    }
+.ayuda{
+    position: fixed;
+    bottom: 2px;
+    right: 30px;
+    width: 40px !important;
+    color: #000000; 
+}
+
+/*contraseña*/
+.confirmarmensaje{
+    font-size: 0.4em !important
+}
+.espacio{
+    text-align: right;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    margin-right: 20px;
+
+}
+.espacio11{
+    text-align: left;
+}
+.alineacion{
+margin-left: 50px;
+margin-right: 50px;
+margin-bottom: 50px;
+}
+.alineacion1{
+    margin-left: 30px;
+    margin-right: 30px;
+    margin-bottom: 30px;
+    margin-top: 10px;
+    font-size: 4em !important
+    }
+
+.espacio1{
+    margin-right: auto;
+}
+.botonaceptar{
+    margin-bottom: 20px;
+}
+/*copia de seguridad*/
+.seguridad{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.contenedorcopia{
+    width: 85%;
+    min-height: 0vh;
+    padding: 60px;
+}
+.bg-tabla1{
+    background-color: rgba(221, 230, 255, 0.683);
+    border-radius: 10px;
+    padding: 20px 30px ;
+    
+}
+/*alinear cuadros de la nueva contraseña*/
+label{
+    display: inline-block;
+    width: 160px;
+    margin-left: 21px;
+  }
+
+.alin{
+    margin-left: 19px;
+}
+
+/*Inicio*/
+header{
+    background-color: #4c83fa;
+    
+}
+/*Terminos y condiciones*/
+
+.termino{
+    height: 260px;
+    width: 100%;
+    overflow-y: auto;
+}
+.condiciones{
+    margin: auto;
+    margin-left: 20px;
+    margin-right: 20px;
+    text-align: justify;
+}
+.condiciones1{
+    margin: auto;
+    margin-left: 50%;
+}
+.modal-register1 {
+    max-width: 550px;
+    margin: 1.75rem auto;
+    font-size: 1.3em;
+}
+.titulotermino{
+    text-align: center;
+}
+
+.headerI1{
+    display: flex;
+    width: 100%;
+}
+
+    .cuadroHI1-1{
+        width: 70%;
+        text-align: center;
+        font-size: 4em;
+    }
+
+        .menu{
+            margin: 20px 25px 0px 0px;
+            color: #345995;
+            display: flex;
+            justify-content: flex-end;
+        }
+        
+
+.headerI2{
+    display: flex;
+    width: 100%;
+    height: auto;
+}
+    h1{
+        font-size: 4rem !important;
+      }
+.cuadroHI2-2{
+    display: table;
+
+}
+.cuadroHI3-2{
+    display: table;
+
+}
+.width-botton{
+    width: 35px !important;
+}
+.ver-user{
+    margin-top: -10px !important;
+}
+.derecha{
+    color: #345995 !important;  
+    margin-right: 30px;
+    margin-top: 20px;
+    width: 100px;
+}
+.width-a{
+    width: 45px !important;
+    height: 45px !important;
+}
+.devolver{
+    margin-top: 100%  !important;
+    width: 35px !important;
+}
+    .cuadroHI2-2 nav{
+        display: table-cell;
+        vertical-align: middle;
+        text-align: center;
+    }
+ 
+    .cuadroHI2-2 nav ul{
+        list-style: none;
+        display: inline-block;
+        padding: 5px;
+    }
+ 
+    .cuadroHI2-2 nav ul li{
+        float: left;
+        margin-top: 5px;
+    }
+ 
+    .cuadroHI2-2 nav ul li a {
+        background-color: #ffffff;
+        color: rgb(0, 0, 0);
+        font-weight: bold;
+        font-size: 1.5em;
+        padding: 10px;
+    }
+    
+ 
+    .cuadroHI2-2 nav ul li a:hover{
+        background-color: #00c3ff7c;
+    }
+
+    
+
+
+    .cuadroHI3-2 nav{
+        display: table-cell;
+        vertical-align: middle;
+        text-align: center;
+    }
+ 
+    .cuadroHI3-2 nav ul{
+        list-style: none;
+        display: inline-block;
+        padding: 5px;
+    }
+ 
+    .cuadroHI3-2 nav ul li{
+        float: left;
+        margin-top: 5px;
+    }
+
+    .cuadroHI3-2 nav ul li a:hover{
+        background-color: #72ceeb7c;
+    }
+    .cuadroHI3-2 nav ul li a {
+        background-color: #b9b2b2;
+        color: rgb(0, 0, 0);
+        font-weight: bold;
+        font-size: 3em;
+        padding: 10px;
+    }
+.txtMainI{
+    font-size: 3em;
+    text-align: left;
+    color: rgb(0, 0, 0);
+    text-align: center;
+}
+/*Factura*/
+.final{
+    text-align: right;
+}
+.fondoFormulario1{
+    width: 300px;
+    background-color: #f1f1f1f1;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 40px 20px  rgb(190, 190, 192);
+    height: 400px;
+    margin-right: 25px;
+}
+.fondoFormulario2{
+    width: 300px;
+    background-color: #f1f1f1f1;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 40px 20px  rgb(190, 190, 192);
+    height: 250px;
+    margin-right: 25px;
+}
+.nuevaclase{
+    margin-left: 7%;
+}
+.centrandologo{
+    text-align: left;
+}
+.derelogo{
+    margin-left: 40px!important;
+    margin-top: 20px;
+    width: 70px;
+    height: 70px;
+    text-align: center!important;
+}
+.navTablafactura{
+    background-color: rgba(221, 230, 255, 0.683);
+    border-radius: 10px;
+    padding: 0px 45px ;
+    margin-top: 11px;
+}
+.bg-verfactura{
+    border-radius: 20px;
+    background-color: white;
+}
+.totalfactura{
+    text-align: right;
+    font-size: 1.7em;
+}
+.footerfactura{
+    text-align: center;
+    font-size: 1.5em!important;
+    color: #98999b;
+}
+.numero{
+    font-size: 1,50em!important;
+    text-align: center;
+}
+.modal-modal{
+    width: 50%;
+    margin-left: 400px;
+}
+.contenedorTablaver{
+    margin-left: 3%;
+    margin-right: 3%;
+}
+.modalverproducto{
+    height: 400px;
+    width: 100%;
+    overflow-y: auto;
+}
+/*Pago*/
+.modal-modal1{
+    width: 30%;
+    margin-left: 500px;
+}
+.modal-title1{
+    margin-left: 100px;
+}
+
+/*Pago*/
+.centrarpago{
+    margin-left: 18%;
+}
+
+
+
+/*Usuario*/
+.headerInicio{
+    height: auto;
+}
+.tituloNav{
+    display: flex;
+    flex-direction: column;
+}
+.contenedorMainU{
+    width: 95%;
+    min-height: 0vh;
+    padding: 20px;
+}
+.contenedorMainP{
+    width: 100%;
+    min-height: 0vh;
+    padding: 20px;
+}
+    .navegar{
+        display: inline-block;
+        justify-content:left;
+    }
+        .navegar div{
+            float: left;
+            padding: 10px;
+        }
+    .usuarioU{
+        float: right;
+    }
+    .botoncrear{
+        display: flex;
+        float: left;
+    }
+
+    .p{
+        display: flex;
+        justify-content:left;
+    }
+.navTabla{
+    background-color: rgba(221, 230, 255, 0.683);
+    border-radius: 10px;
+    padding: 0px 45px ;
+    margin-top: 52px;
+
+}
+.navTabla00{
+    background-color: rgba(221, 230, 255, 0.683);
+    border-radius: 10px;
+    padding: 0px 45px ;
+    margin-top: 52px;
+    margin-bottom:100px
+
+}
+.bg-tabla{
+    background-color: rgba(221, 230, 255, 0.683);
+    border-radius: 10px;
+    padding: 45px;
+    
+}
+.conBotonImp{
+    background-color: rgb(151, 142, 142);
+    color: rgb(255, 255, 255);
+    padding: 2px 6px;
+    margin: 0px 10px 0px 0px;
+
+}
+.conBotonExcel{
+    background-color: rgb(130, 226, 119);
+    color: rgb(255, 255, 255);
+    padding: 2px 6px;
+    margin: 0px 10px 0px 0px;
+}
+.conBotonPdf{
+    background-color: rgb(238, 145, 145);
+    color: rgb(255, 255, 255);
+    padding: 2px 6px;
+}
+.imprimirPdf{
+    width: 50px;
+}
+
+.registrar{
+    margin-left: 12px;
+    text-align: left;
+    width: 300px;
+    padding: 25px;
+
+}
+
+.agreproducto{
+    margin-left: 12px;
+    text-align: center;
+}
+.tallaproducto{
+margin-left: 13px;
+text-align: center;
+width: 50px;
+}    
+.marcaproducto{
+margin-left: 13px;
+text-align: center;
+width: 50px;
+}
+.color{
+    margin-left: 13px;
+    width: 50px;
+    text-align: center;
+}
+.iconosOpcion{
+    display: flex;
+    align-items: left;
+    font-size: 0.8em;
+   
+}
+.talla{
+width: 15px;
+}
+
+.opcionesTabla{
+    width: 35px;
+    padding: 2px;
+    margin-top: -6px !important;
+   
+}
+.iconAdUsuario{
+    width: 40px;
+}
+
+.historial{
+    margin-right: 20px;
+    margin-top: 20px;
+}
+
+
+/*ICONOS*/
+.acces {
+    position: fixed;
+    right: 0px;
+    top: 50%;
+}
+    .acces h2{
+        font-size: 1.5em;
+        text-align: center;
+    }
+        
+
+/*ver producto*/
+.datosver{
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 25px;
+    font-size: 4em;
+    }
+    .verproduc{
+        width: 35%;
+        margin: 0 auto;
+        border: 2px solid black;
+        font-size: 2em;
+        margin-bottom: 100px;
+    
+    }
+.btn-green{
+    background-color: aquamarine;
+    border-color: azure;
+}
+.tituloFormulario{
+    font-size: 3em !important;
+
+}
+.fondoFormulario{
+    width: 300px;
+    background-color: #f1f1f1f1;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 40px 20px  rgb(190, 190, 192);
+}
+
+@media screen and (max-width:1300px){
+/*Index*/
+
+main{
+    min-height: 60vh !important;
+}
+.contenedorMain {
+    width: 80%;
+
+}
+    .accesibilidad{
+        width: 30px;
+    }
+    .ayuda{
+        width: 30px;
+        font-size: 0.7em;
+    }
+    h1{
+        font-size: 2.5rem !important;
+      }
+    
+    .marqueeTxt{
+        font-size: 4em;        
+    }
+
+    
+/*Inicio*/
+    .cuadroHI2-2 nav ul li a {
+        font-size: 2.5em;
+        padding: 5px;
+    }
+    .cuadroHI3-2 nav ul li a {
+        font-size: 2.5em;
+        padding: 5px;
+    }
+    .txtMainI{
+        font-size: 3em;
+    }
+    .contenedorMainU{
+        min-height: 0vh;
+    }
+        .cuadroHI2-2 nav ul li a {
+            font-size: 1.5em;
+            padding: 10px 5px;
+        }
+        .cuadroHI3-2 nav ul li a {
+            font-size: 1.5em;
+            padding: 10px 5px;
+        }
+        .txtMainI{
+            font-size: 2em;
+            text-align: center;
+        }
+/*Usuario*/
+.opcionesTabla{
+    width: 25px;
+    padding: 2px;
+}
+
+    .conBotonImp{
+        background-color: rgb(151, 142, 142);
+        color: rgb(255, 255, 255);
+        padding: 2px 4px;
+        margin: 0px 5px 0px 0px;
+
+    }
+    .conBotonExcel{
+        background-color: rgb(130, 226, 119);
+        color: rgb(255, 255, 255);
+        padding: 2px 4px;
+        margin: 0px 5px 0px 0px;
+    }
+    .conBotonPdf{
+        background-color: rgb(238, 145, 145);
+        color: rgb(255, 255, 255);
+        padding: 2px 4px;
+    }
+    .imprimirPdf{
+        width: 40px;
+    }
+/*Producto*/
+.w-tableVer{
+    width: 50% !important;
+}
+.font-tabla-ver{
+    font-size: 1em;
+}
+.contenedorTabla{
+    font-size: 0.7em;
+}
+}
+@media screen and (max-width:700px){
+/*Index*/
+
+main{
+    min-height: 40vh !important;
+}
+.video-ayuda{
+    font-size: 2rem !important;
+
+}
+    h1{
+        font-size: 1.5rem;
+        }
+        .botonH3{
+            float: right;
+            margin-top: 30% !important;
+            margin-right: 30% !important;
+            padding: 0px 0px !important;
+            font-size: 0.8rem !important;
+        }
+    .marqueeTxt{
+        font-size: 0.8em;
+    }
+        .contenedor-footer{
+            flex-direction: column;
+            border: none;
+        }
+    
+        .content-foo{
+            margin-bottom: 20px;
+            text-align: center;
+        }
+    
+        .content-foo h4{
+            border: none;
+        }
+    
+        .content-foo p{
+            color: #ccc;
+            border-bottom: 1px solid #f2f2f2;
+            padding-bottom: 20px;
+        } 
+        .titulo-final{
+            font-size: 20px;
+        }
+/*Inicio*/
+.w-tableVer{
+    width: 80% !important;
+}
+ 
+    .cuadroHI2-2 nav ul li a {
+        font-size: 1em;
+        padding: 10px 5px;
+    }
+    .cuadroHI3-2 nav ul li a {
+        font-size: 1em;
+        padding: 10px 5px;
+    }
+    .txtMainI{
+        font-size: 2em;
+        text-align: center;
+    }
+/*usuario*/
+
+.navTablaUsuario{
+    width: 20px;
+}
+
+/*Ver producto*/
+.verproduc{
+    width: 75%;
+    margin: 0 auto;
+    border: 2px solid black;
+    font-size: 1.4em;
+    margin-bottom: 100px;
+
+}
+.textoH2{
+    font-size: 2em !important;
+}
+.textoH3{
+    font-size: 2em !important;
+}
+.opcionesTabla{
+    width: 25px;
+    padding: 3px;
+}
+.conBotonImp{
+        background-color: rgb(151, 142, 142);
+        color: rgb(255, 255, 255);
+        padding: 1px 2px;
+        margin: 0px 2px 0px 0px;
+
+    }
+    .conBotonExcel{
+        background-color: rgb(130, 226, 119);
+        color: rgb(255, 255, 255);
+        padding: 1px 2px;
+        margin: 0px 5px 0px 0px;
+    }
+    .conBotonPdf{
+        background-color: rgb(238, 145, 145);
+        color: rgb(255, 255, 255);
+        padding: 1px 2px;
+    }
+    .imprimirPdf{
+        width: 20px;
+    }
+.iconAdUsuario{
+    width: 20px;
+}
+
+}
+
+@media screen and (max-width:583px){
+.bg-tabla{
+    margin-top: 20px !important;
+    margin-bottom: 20px !important;
+}
+.table{
+    margin-top: 15px !important;
+}
+.iconosOpcion{
+    margin-top: 20px;
+}
+.txt-Btn-tabla{
+    font-size: 1em;
+}
+.dataTables_wrapper .dataTables_info, .dataTables_wrapper .dataTables_paginate {
+    font-size: 0.7em !important;
+}
+.iconos-tabla{
+    width: 30px;
+}
+.contenedorTabla{
+    font-size: 0.5em;
+}
+.w-tableVer{
+    width: 100% !important;
+}
+.cuadroHI2-2 nav ul li a {
+    font-size: 0.8em;
+    padding: 10px 5px;
+}
+.cuadroHI3-2 nav ul li a {
+    font-size: 0.8em;
+    padding: 10px 5px;
+}
+.padding{
+    padding: 10px 0px 30px 0px;
+}
+.img-Botton{
+    width: 20px !important;
+}
+    .menu{
+        margin: 10px 15px 0px 0px;
+    }
+    main{
+        min-height: 50vh !important;
+    }
+
+
+.navTablaUsuario{
+    width: 10px;
+}
+.contenedorMain {
+    width: 100%;
+}
+
+/*Crear Usuario*/
+.formularioProducto {
+    font-size: 0.8em;
+}
+.botonH3{
+    float: right;
+    margin-top: 25%;
+    margin-right: 5%;
+    font-size: 0.8rem !important;
+}
+.tituloFormulario{
+    font-size: 3em !important;
+
+}
+.fondoFormulario{
+    background-color: #f1f1f1f1;
+}
+.textoH2{
+    font-size: 1em !important;
+}
+.textoH3{
+    font-size: 1em !important;
+}
+.opcionesTabla{
+    width: 25px;
+    padding: 2px;
+}
+
+}
+
+@media screen and (max-width:375px){
+
+/*Inicio*/
+    .cuadroHI2-2 nav ul li a { 
+        padding: 10px 2px;
+        font-size: 0.7em !important;
+    }
+    .cuadroHI3-2 nav ul li a { 
+        padding: 10px 2px;
+        font-size: 0.7em !important;
+    }
+    h1{
+        font-size: 0.8rem;
+    }
+
+.txtMainI{
+    font-size: 1em;
+    padding: 10px;
+}
+.breadcrumb-item{
+    font-size: 0.8em;
+}
+
+.img-Botton{
+    width: 10px !important;
+}
+    .btn-w {
+        width: 50px !important;
+    }
+    .menu{
+        margin: 5px 5px 0px 0px;
+    }
+/*Usuario*/
+
+/*Crear Usuario*/
+.formularioProducto {
+    font-size: 0.6em;
+}
+.derecha{
+    margin-right: 20px;
+}
+
+/*ver producto*/
+.verproduc{
+            width: 75%;
+            margin: 0 auto;
+            border: 2px solid black;
+            font-size: 1em;
+            margin-bottom: 100px; 
+        }
+.fondoFormulario{
+    font-size: 0.8em;
+    width: 200px;
+    background-color: #f1f1f1f1;
+}
+}
+
+
+.btn-greennn{
+    background: greenyellow;
+}
+
+
+.modal-footer{
+    justify-content: flex-start !important; 
+}
+
+
+.modal-register {
+    max-width: 400px;
+    margin: 1.75rem auto;
+}
+
+.pdf-lugar{
+    border-radius: 20px;
+    background-color: #b3b3b3;
+
+}
+.contenerdor-factura{
+    margin: 100px;
+}
+.texto-1{
+    font-weight:900;
+    font-size: 30px;
+}
+.texto-2{
+    font-size: 25px;
+}
+.pdf-id{
+    margin-left: 200px;
+}
+.contenedor1{
+    display: flex;
+    justify-content: space-between;
+}
+.thead-factura{
+    background-color: #b3b3b3;
+}
+.thead-factura1{
+    background-color: #9e9c9c;
+}
+.T-table{
+    font-size: 30px;
+}
+.B-table{
+    font-size: 25px;
+}
+.html{
+    background-color: #ecf1f7de;
+    margin: 20px;
+    border-radius: 20px;
+}
+.total{
+    margin-block-end: 0;
+}
+.itemd{
+    font-size: 1.2rem !important;
+}

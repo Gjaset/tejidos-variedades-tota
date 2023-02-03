@@ -1,0 +1,119 @@
+{% extends 'partials/body.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block contenido %}
+
+</script>
+    <div class="contenedorMainP mx-auto">
+        <div class="navTabla ">
+          <div class="d-flex flex-row w-100 breadNav">
+            <div>
+              <p class="txtMainI">Producto</p>
+            </div>
+            <div>
+              <nav aria-label="breadcrumb ">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url 'inicio' %}">Inicio</a></li>
+                <li class="breadcrumb-item"><a href="{% url 'producto-producto' %}">Producto</a></li>
+              </ol>
+              </nav>
+            </div>
+          </div>
+            <div class="tablaProducto">
+            
+            <div class="tablascrol"> 
+                <table class="table bg-white table-bordered results " id="tablaProducto">
+                    <thead class="theadtable">
+                      <tr class="text-white odd">
+                            <th scope="col" >Rol </th> 
+                            <th scope="col" >Nombre del <br>usuario</th>  
+                            <th scope="col" >Categoría</th>
+                            <th scope="col" >Nombre del <br>producto</th>                     
+                            <th scope="col" >Talla</th>
+                            <th scope="col" >Color</th>
+                            <th scope="col" >Marca</th>
+                            <th scope="col" >Precio<br>compra </th>
+                            <th scope="col" >Porcentaje <br>a ganar</th>
+                            <th scope="col" >Valor del<br> porcentaje</th>
+                            <th scope="col" >Precio<br>venta</th>
+                            <th scope="col" >Stock</th>
+                            
+                            <th scope="col" class="dt-body-right dtr-hidden">Opciones</th>
+                        </tr>
+                            
+                    </thead>
+                    <tbody>
+                        {% for productoT in productoTs %}
+                        {% if productoT.estado == "Activo" %}
+                        <tr>
+                          <td class="dtr-control sorting_1">{{productoT.rol.Rnombre}}</td>
+                          <td class="dtr-control sorting_1">{{productoT.usuario}}</td>
+                          <td class="dtr-hidden">{{productoT.categoria}}</td>
+                          <td class="dtr-hidden">{{productoT.nombre}}</td>   
+                          <td class="dt-body-right dtr-hidden">{{productoT.talla}}</td>
+                          <td class="dt-body-right dtr-hidden">{{productoT.color}}</td>
+                          <td class="dt-body-right dtr-hidden">{{productoT.marca}}</td>
+                          <td class="dt-body-right dtr-hidden">$ {{productoT.precio}}</td>
+                          <td class="dt-body-right dtr-hidden">{{productoT.porcentaje}}%</td>
+                          <td class="dt-body-right dtr-hidden">$ {{productoT.valorPorcentaje}}</td>
+                          <td class="dt-body-right dtr-hidden">$ {{productoT.precio_venta}}</td>
+                          <td class="dt-body-right dtr-hidden">{{productoT.stock}}
+                            </td>
+                            <td ><a href="{% url 'producto-verproducto' productoT.id %}"><svg src="img/png/eye.svg"   fill="currentColor" class=" opcionesTabla bi bi-eye" viewBox="0 0 16 16">
+                                <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"/>
+                                <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/>
+                                <title> Ver detalles del producto </title> 
+                              </svg>
+                              </a>
+
+                              <a href="{% url 'producto-editarproducto' productoT.id %}"><svg src="img/png/lapiz.svg"  fill="currentColor" class="opcionesTabla bi bi-pencil-square" viewBox="0 0 16 16">
+                                <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                                <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                                <title> Editar producto </title> 
+                              </svg></a>
+                              <a href="{% url 'producto-producto-eliminar' productoT.id %}"><svg xmlns="http://www.w3.org/2000/svg"  fill="currentColor" class=" opcionesTabla bi bi-trash" viewBox="0 0 16 16">
+                                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                                <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                                <title> Desactivar producto </title> 
+                              </svg>
+                              
+
+                                
+                            {% endif %}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="iconosOpcion">
+                <div class="agreproducto">
+                    <a href="{% url 'producto-crearproducto' %}"><img class="iconos-tabla" alt="Agregar producto" src="{% static 'img/png/plus-circle-fill.svg' %}" title="Agregar producto" ></a>
+                    <p class="txt-Btn-tabla">Agregar<br>producto</p> 
+                </div>
+                <div class="tallaproducto ">
+                  <a href="{% url 'producto-talla' %}"><img class="iconos-tabla" alt="Talla" src="{% static 'img/png/rulers.svg' %}" title="Talla"></a>
+                  <p class="txt-Btn-tabla">Talla</p>
+                </div>
+                <div class="marcaproducto">
+                  <a href="{% url 'producto-marca' %}"><img  class="iconos-tabla" alt="Marca" src="{% static 'img/png/tag-fill.svg' %}" title="Marca"></a>
+                  <p class="txt-Btn-tabla">Marca</p>
+                </div>
+                <div class="color">
+                  <a href="{% url 'producto-color' %}"><img class="iconos-tabla" alt="Color" src="{% static 'img\png\palette-fill.svg' %}" title="Color" ></a>
+                  <p class="txt-Btn-tabla">Color</p> 
+                  </div>
+                  <div class="color" title="Productos eliminados">
+                  <a href="{% url 'producto-productoI' %}"><svg xmlns="http://www.w3.org/2000/svg" class="iconos-tabla" fill="currentColor" class="bi bi-eye-slash" viewBox="0 0 16 16" >
+                <path d="M13.359 11.238C15.06 9.72 16 8 16 8s-3-5.5-8-5.5a7.028 7.028 0 0 0-2.79.588l.77.771A5.944 5.944 0 0 1 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.134 13.134 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755-.165.165-.337.328-.517.486l.708.709z"/>
+                <path d="M11.297 9.176a3.5 3.5 0 0 0-4.474-4.474l.823.823a2.5 2.5 0 0 1 2.829 2.829l.822.822zm-2.943 1.299.822.822a3.5 3.5 0 0 1-4.474-4.474l.823.823a2.5 2.5 0 0 0 2.829 2.829z"/>
+                <path d="M3.35 5.47c-.18.16-.353.322-.518.487A13.134 13.134 0 0 0 1.172 8l.195.288c.335.48.83 1.12 1.465 1.755C4.121 11.332 5.881 12.5 8 12.5c.716 0 1.39-.133 2.02-.36l.77.772A7.029 7.029 0 0 1 8 13.5C3 13.5 0 8 0 8s.939-1.721 2.641-3.238l.708.709zm10.296 8.884-12-12 .708-.708 12 12-.708.708z"/>
+              </svg></a> 
+              <p class="txt-Btn-tabla">Productos<br>desactivados</p> 
+             
+              </div>
+        </div>
+    </div>
+    </div>
+    </div>
+{% endblock contenido %}

@@ -1,0 +1,80 @@
+<!-- Modal -->
+<div class="modal fade show" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
+  role="dialog" style="display: block;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Datos del producto</h5>
+        <a class="btn-close" data-bs-dismiss="modal" href="{% url 'producto-producto' %}" aria-label="Close"></a>
+      </div>
+      <div class="modal-body">
+     <div class="p-9">
+
+                <div class=" ">
+                    <div class="  tablaProducto modalverproducto ">
+                        <table class=" table results  centrar  tablaVer font-2em" >
+                            <thead class="">
+                                <tr>
+                                    <th scope="col" >Tipo usuario : </th>
+                                    <th scope="col" >{{producto.usuario.rol}}</th>
+                                </tr>
+                                <tr>
+                                    <th scope="col"  >Usuario :</th>
+                                    <th scope="col" >{{producto.usuario.Unombre}}  {{producto.usuario.apellido}}</th>
+                                </tr>
+                            
+                                <tr>
+                                    <th scope="col" >Categoria :</th>
+                                    <th scope="col" >{{producto.categoria}}</th>
+                                </tr>
+                                <tr >
+                                    <th scope="col" >Nombre :</th>
+                                    <th scope="col" >{{producto.nombre}}</th>
+                                </tr>
+                                
+                                <tr>
+                                    <th scope="col"  >Precio :</th>
+                                    <th scope="col">{{producto.precio}} </th>
+                                </tr>
+                                <tr>
+                                    <th scope="col"  >Porcentaje <br>a ganar :</th>
+                                    <th scope="col">{{producto.porcentaje}}</th>
+                                </tr>
+                                <tr>
+                                    <th scope="col" >Valor <br>porcentaje :</th>
+                                    <th scope="col">{{producto.valorPorcentaje}}</th>
+                                </tr>
+                                <tr>
+                                    <th scope="col" >Precio venta :</th>
+                                    <th scope="col" >{{producto.precio_venta}}</th>
+                                </tr>
+                                <tr>
+                                    <th scope="col"  >Color :</th>
+                                    <th scope="col">{{producto.color}}</th>
+                                </tr>
+                                <tr>
+                                    <th scope="col" >Marca :</th>
+                                    <th scope="col">{{producto.marca}}</th>
+                                </tr>
+                                <tr>
+                                    <th scope="col"  >Talla :</th>
+                                    <th scope="col">{{producto.talla}}</th>
+                                </tr>
+                                <tr>
+                                    <th scope="col"  >Estado :</th>
+                                    <th scope="col">{{producto.estado}}</th>
+                                </tr>
+                        </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>    
+<div class="modal-backdrop fade show"></div>
+
+
+
+
+

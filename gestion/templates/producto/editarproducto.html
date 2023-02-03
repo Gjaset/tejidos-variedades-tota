@@ -1,0 +1,94 @@
+{% extends 'partials/body.html' %}
+{% load crispy_forms_tags %}
+
+{% block contenido %}
+  
+    <div class="d-flex flex-row mx-auto formularioProducto container ">
+        
+        <div class="d-flex flex-row  mx-auto  ">
+            <div class="derecha width-botton">
+                <a class="width-a" href=" {% url 'producto-producto' %}" class="btn d-flex justify-content-center " alt="Producto"  title="Regresar" >
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="devolver opcionesTabla bi bi-arrow-left-square-fill  " viewBox="0 0 16 16">
+                        <path d="M16 14a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12zm-4.5-6.5H5.707l2.147-2.146a.5.5 0 1 0-.708-.708l-3 3a.5.5 0 0 0 0 .708l3 3a.5.5 0 0 0 .708-.708L5.707 8.5H11.5a.5.5 0 0 0 0-1z"/>
+                        </svg>
+                </a>
+            </div>
+            <div class="my-5 fondoFormulario">
+                <div class="title">
+                    <div>
+                        <h2 class="tituloFormulario">Editar producto</h2>
+                    </div>
+                </div>
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    
+                    <div id="div_id_color" class="mb-3"> 
+                        <label for="id_color" class="form-label ">Color<span class="asteriskField">*</span></label> 
+                        <select name="color"  class="select form-select" required="" id="select4"> 
+                             
+                            {% for col in colores %}
+                            {% for pro in edit %}
+                            {% if pro.color_id == col.id %}
+                                <option value="{{pro.color_id}}">{{pro.color.nombre}}</option>
+                                {%for col in colores %}
+                                {% if col.id == pro.color_id%}
+                                {% else %}
+                                <option value="{{col.id}}">{{col.nombre}}</option>
+                                {%endif%}
+                                {%endfor%}
+                                
+                            {% else %}
+                            {% endif %}
+                            {% endfor %}
+                            {% endfor %} 
+        
+                        </select>
+                    </div>
+                    <div id="div_id_talla" class="mb-3"> 
+                        <label for="id_talla" class="form-label ">Talla<span class="asteriskField">*</span></label> 
+                        <select name="talla" class="select form-select" required="" id="select6"> 
+                            {% for tal in tallas %}
+                            {% for pro in edit %}
+                            {% if pro.talla_id == tal.id %}
+                                <option value="{{pro.talla_id}}">{{pro.talla.nombre}}</option>
+                                {%for tal in tallas %}
+                                {% if tal.id == pro.talla_id%}
+                                {%else%}
+                                <option value="{{tal.id}}">{{tal.nombre}}</option>
+                                {%endif%}
+                                {%endfor%}
+                            {% else %}
+                            {% endif %}
+                            {% endfor %}
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div id="div_id_marca" class="mb-3"> 
+                        <label for="id_marca" class="form-label ">Marca<span class="asteriskField">*</span></label> 
+                        <select name="marca"  class="select form-select" required="" id="select8">
+                            {% for mar in marcas %}
+                            {% for pro in edit %}
+                            {% if pro.marca_id == mar.id %}
+                                <option value="{{pro.marca_id}}">{{pro.marca.nombre}}</option>
+                                {%for mar in marcas %}
+                                {%if mar.id == pro.marca_id%}
+                                {%else%}
+                                <option value="{{mar.id}}">{{mar.nombre}}</option>
+                                {%endif%}
+                                {%endfor%}
+                            {% else %}
+                            {% endif %}
+                            {% endfor %}
+                            {% endfor %} 
+
+                        </select>
+                    </div>
+                    <input class="btn btn-primary btn-block" type="submit" Value=" Guardar">
+                </form>
+            </div>
+        </div>
+
+        </div>
+    </div>
+{% endblock contenido %}

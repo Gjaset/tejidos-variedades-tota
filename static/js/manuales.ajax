@@ -1,0 +1,14 @@
+$('#manual').ajax({
+    type : "POST",
+    dataType: "json",
+    url: "/media/manuales/manual de usuario.pdf",
+    data : { 
+      'fecInicio' : $("#fecInicio").val() , 
+      'fecFin' : $("#fecFin").val() 
+    },
+    success : function(result){
+       var url = result.url;
+       window.location = url;
+    }
+    
+})

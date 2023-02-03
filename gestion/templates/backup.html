@@ -1,0 +1,87 @@
+{% extends 'partials/body.html' %} {% block contenido %} {% load crispy_forms_tags %} {% load static %}
+
+<div class="contenedorcopia mx-auto">
+    <div class="row bg-tabla1 ">
+        <div class="col">
+            <h2 class="seguridad">Copias de seguridad anteriores</h2>
+            <div class="mb-6">
+                {% for modelo in ficheros %}
+                <div class="mb-3 ">
+                    <a href="{% static 'backup' %}/{{modelo}}">{{modelo}}</a>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="col">
+            <h2>Copia de seguridad por modulo</h2>
+            <form action="{% url 'backup' tipo='D' %}" method="POST">
+                {% csrf_token %}
+                <div class="my-3">
+                    <select class="from-select" aria-label="Default select example" name="opcion">
+                        <option value="usuarios_usuario" selected>Usuario</option>
+                        <option value="facturas_factura">Factura</option>
+                        <option value="facturas_detalle">Detalles de factura</option>
+                        <option value="pago_pago">Pago</option>
+                        <option value="pago_detalle_pago">Detalles de pago</option>
+                        <option value="productos_producto">Producto</option>
+                        <option value="productos_color">Color</option>
+                        <option value="productos_marca">Marca</option>
+                        <option value="productos_talla">Talla</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    {% for modelo in bases %}
+                    <div class="mb-3 ">
+                        <a href="{% static 'tablas' %}/{{modelo}}">{{modelo}}</a>
+                    </div>
+                    {% endfor %}
+                </div>
+                <input class="btn btn-primary" type="submit" value="Generar Copia">
+            </form>
+        </div>
+        <div class="col">
+            <h2 class="seguridad">Importar copia de seguridad</h2>
+            <form action="{% url 'backup' tipo='U' %}" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{form|crispy}}
+                <input type="submit" class="btn btn-primary" value="Enviar">
+            </form>
+            {% if messages %}
+            {% for message in messages %}
+            <div class="alert alert-{{ message.tags }} alert-dismissible fade show my-2 text-center" role="alert">
+                <strong>{{ message }}</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <h2 class="seguridad">Historial de Importes</h2>
+            <table class="display table table-striped table-hover text-nowrap mt-3" id="tabla">
+                <thead class="theadtable">
+                    <tr class="text-white">
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Archivo</th>
+                        <th scope="col">Fecha</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for backup in backups %}
+                    <tr>
+                        <td>{{backup.nombre}} </td>
+                        <td>{{backup.archivo.url}} </td>
+                        <td>{{backup.fecha}} </td>
+                    </tr>
+                    {% endfor%}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+{% endblock contenido %}

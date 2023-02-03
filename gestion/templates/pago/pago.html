@@ -1,0 +1,163 @@
+{% extends 'partials/body.html' %}
+{% load crispy_forms_tags %}
+{% block tittle %} Crear Pago {% endblock tittle %}
+{% load static %}
+{% block contenido %}
+
+<!DOCTYPE html>
+<html lang="en">
+<main class="mainU">
+  <div class="contenedorMainU centrarpago">
+
+  <div class="d-flex formularioProducto  ">
+    <div class="my-5 fondoFormulario2 ">
+                <div class="container">
+                <div class=" row">
+                    <h4>Agregar pago</h4>
+                <form action="" method="POST">
+                    <div id="div_id_usuario" class="mb-3">
+                        <label for="id_usuario" class="form-label requiredField">Nombre<span class="asteriskField">*</span></label> 
+                        <select name="usuario" class="select form-select select2" required="" id="id_usuario"> 
+                            {% for items in usuario %}
+                            <option  data-index-number="{{items.rol_id}}|{{items.estado}}" value="{{items.Uid}}">{{items.Unombre}}</option>
+                            {% endfor %}
+
+                        </select>
+                    </div>
+
+                    {% csrf_token %}
+                    {{form|crispy}}
+
+                    <button class="btn btn-primary my-3" type="button" value="Agregar usuario" data-bs-toggle="modal" data-bs-target="#exampleModal"><svg xmlns="http://www.w3.org/2000/svg" width="40"  fill="currentColor" class="bi bi-hdd" viewBox="0 0 16 16">
+                    <path d="M4.5 11a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1zM3 10.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z"/>
+                    <path d="M16 11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V9.51c0-.418.105-.83.305-1.197l2.472-4.531A1.5 1.5 0 0 1 4.094 3h7.812a1.5 1.5 0 0 1 1.317.782l2.472 4.53c.2.368.305.78.305 1.198V11zM3.655 4.26 1.592 8.043C1.724 8.014 1.86 8 2 8h12c.14 0 .276.014.408.042L12.345 4.26a.5.5 0 0 0-.439-.26H4.094a.5.5 0 0 0-.44.26zM1 10v1a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-1a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1z"/>
+                    </svg>Guardar
+                    </button>
+
+                    <div class="conainer p-3" data-bs-toggle="modal">
+                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">           
+                                        <button type="button" class="btn-close btn-btn-light" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <h5 class=" text-center" id="exampleModalLabel">Confirmar</h5>
+                                        <h6 class="modal-title" id="exampleModalLabel">¿Desea guardar?</h6>
+                                    </div>
+                                        <div class="modal-footer">
+                                        <button type="button" class="btn btn-danger" id="liveToastBtnError" data-bs-dismiss="modal" >No</button>
+                                        <button type="submit" class="btn btn-success" id="liveToastBtnExito" data-bs-dismiss="modal" >Si</button>    
+                                    </div>
+                                    <div aria-live="polite" aria-atomic="true" class="position-relative">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>           
+                        <div class="toast-container position-relative bottom-0 end-0 p-3">
+                            <div id="liveToastExito" class="toast align-items-center text-white bg-success border-0 fade hide" role="alert" aria-live="assertive" aria-atomic="true">
+                                <div class="d-flex">
+                                    <div class="toast-body">
+                                        Pago creado
+                                    </div>
+                                    <button type="button" class="btn-close btn-close-white  me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                                </div>
+                            </div>
+                            <div id="liveToastError" class="toast align-items-center text-white bg-danger border-0 fade hide" role="alert" aria-live="assertive" aria-atomic="true">
+                                <div class="d-flex">
+                                    <div class="toast-body">
+                                        Pago no creado
+                                    </div>
+                                    <button type="button" class="btn-close btn-close-white
+                                            me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="navTabla">
+      <div class="d-flex flex-row w-100 breadNav">
+        <div>
+          <p class="txtMainI">Pago</p>
+        </div>
+        <div>
+          <nav aria-label="breadcrumb ">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'inicio' %}">Inicio</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'pago-tpago' %}">Pago</a></li>
+          </ol>
+          </nav>
+        </div>
+      </div>
+      <div class=" tablaProducto">
+        <table class="table bg-white table-bordered results" id="tabla">
+          <thead class="theadtable">
+            <tr class="text-white">
+              <th scope="col">ID</th>
+              <th scope="col">Asociada</th>
+              <th scope="col">Fecha</th>
+              <th scoper="col">Total a pagar</th>
+              <th scope="col">Estado</th> 
+              <th scope="col">Opciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for tpago in tpagos %}
+            {% if not tpago.estado == "Anulada" %}
+            {% if tpago.decision == "Activo" %}
+            <tr>
+              <td>{{tpago.id}}</td>
+              <td>{{tpago.usuario}}</td>
+              <td>{{tpago.fecha}}</td>
+              <td>{{tpago.neto_pagar}}</td>
+              <td>{{tpago.estado}}</td>
+              {% if tpago.estado == "Abierta" %}
+                <td>
+                 
+                  <a href="{% url 'pago-detalles' tpago.id  %}" class= ""alt="Producto"  title="Ver detalles de pago" ><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="opcionesTabla bi bi-trash" viewBox="0 0 16 16">
+                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                    <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                  </svg></a>
+
+                  <a href="{% url 'pago_estado' tpago.id tpago.estado%}" class= ""alt="Producto"  title="Cerrar pago" ><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="opcionesTabla bi bi-trash"  viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M11 15a4 4 0 1 0 0-8 4 4 0 0 0 0 8zm5-4a5 5 0 1 1-10 0 5 5 0 0 1 10 0z"/>
+                    <path d="M9.438 11.944c.047.596.518 1.06 1.363 1.116v.44h.375v-.443c.875-.061 1.386-.529 1.386-1.207 0-.618-.39-.936-1.09-1.1l-.296-.07v-1.2c.376.043.614.248.671.532h.658c-.047-.575-.54-1.024-1.329-1.073V8.5h-.375v.45c-.747.073-1.255.522-1.255 1.158 0 .562.378.92 1.007 1.066l.248.061v1.272c-.384-.058-.639-.27-.696-.563h-.668zm1.36-1.354c-.369-.085-.569-.26-.569-.522 0-.294.216-.514.572-.578v1.1h-.003zm.432.746c.449.104.655.272.655.569 0 .339-.257.571-.709.614v-1.195l.054.012z"/>
+                    <path d="M1 0a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h4.083c.058-.344.145-.678.258-1H3a2 2 0 0 0-2-2V3a2 2 0 0 0 2-2h10a2 2 0 0 0 2 2v3.528c.38.34.717.728 1 1.154V1a1 1 0 0 0-1-1H1z"/>
+                    <path d="M9.998 5.083 10 5a2 2 0 1 0-3.132 1.65 5.982 5.982 0 0 1 3.13-1.567z"/>
+                  </svg></a>
+              {% else %}
+              <td class="">
+                  <span class="pagado">PAGADO</span>
+                  <a href="{% url 'pago-verpago' tpago.id  %}" class= "" alt="Producto"  title="Ver pago"><svg xmlns="http://www.w3.org/2000/svg"  fill="currentColor" class=" opcionesTabla bi bi-trash " viewBox="0 0 16 16">
+                    <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"/>
+                    <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/>
+                  </svg></a>
+                {% endif %}
+  
+              {% endif %}
+  
+              {% endif %} 
+              </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+        <div class="iconosOpcion">
+         
+        </div>
+      </div> 
+    </div>
+    </div>
+  </main>
+  
+  </html>
+  
+  {% endblock contenido %}
+  
+  
+  
+  

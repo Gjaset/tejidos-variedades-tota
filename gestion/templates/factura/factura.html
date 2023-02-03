@@ -1,0 +1,163 @@
+{% extends 'partials/body.html' %}
+{% load crispy_forms_tags %}
+{% block tittle %} Crear factura {% endblock tittle %}
+{% load static %}
+{% block contenido %}
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<main class="mainU">
+<div class="contenedorMainU mx-auto">
+ <div class="nuevaclase">
+ <div class="row p-5"> 
+  <div class="d-flex formularioProducto  ">
+      <div class="my-2 fondoFormulario1 ">
+              <div class="container">
+                <div class=" ">
+                    <div class="row">
+                        <h4 style="width: 240px;">Agregar factura</h4>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="alineandoicono" width="20" height="20" fill="currentColor" style="width: 40px;" class="bi bi-info-square" viewBox="0 0 16 16">
+                          <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+                          <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                          <title> N= nombre producto  M=marca  T=talla  C=color </title>
+                      </svg>
+                    </div>
+                        <h5> <br>Venta: Cliente </h5>
+                        <h5>Compra: Asociada/Proveedor</h5>
+                <form action="" method="POST">
+                    <div id="div_id_rol" class="mb-3"> 
+                    <label for="id_rol" class="form-label requiredField">Rol<span class="asteriskField">*</span></label> 
+                        <select  name="rol" class="select form-select " required="" id="select1"> 
+                            
+                            <option value="" selected="" >--- Seleccione el rol ---</option>
+                            {% for ro in  rol %}
+                            <option  value="{{ro.Rid}}" >{{ro.Rnombre}}</option>
+                            {% endfor  %}
+                            
+                        </select>
+                    </div>
+
+                    <div id="div_id_usuario" class="mb-3">
+                        <label for="id_usuario" class="form-label requiredField">Nombre<span class="asteriskField">*</span></label> 
+                        <select name="usuario" class="select form-select " required="" id="select2"> 
+                                
+                            <option selected disabled="true">--- Seleccione el usuario ---</option>    
+                            {% for items in usuario %}
+                            <option  data-index-number="{{items.rol_id}}|{{items.estado}}" value="{{items.Uid}}">{{items.Unombre}}</option>
+                            {% endfor %}
+
+                        </select>
+                    </div>
+
+                    {% csrf_token %}
+                    {{form|crispy}}
+
+                    <button class="btn btn-primary my-3" type="submit" value="Agregar usuario" data-bs-toggle="modal" data-bs-target="#exampleModal"><svg xmlns="http://www.w3.org/2000/svg" width="40"  fill="currentColor" class="bi bi-hdd" viewBox="0 0 16 16">
+                    <path d="M4.5 11a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1zM3 10.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z"/>
+                    <path d="M16 11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V9.51c0-.418.105-.83.305-1.197l2.472-4.531A1.5 1.5 0 0 1 4.094 3h7.812a1.5 1.5 0 0 1 1.317.782l2.472 4.53c.2.368.305.78.305 1.198V11zM3.655 4.26 1.592 8.043C1.724 8.014 1.86 8 2 8h12c.14 0 .276.014.408.042L12.345 4.26a.5.5 0 0 0-.439-.26H4.094a.5.5 0 0 0-.44.26zM1 10v1a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-1a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1z"/>
+                    </svg> Guardar
+                    </button>
+                </form>
+              </div>
+        </div>
+  </div>
+
+    <div class="navTablafactura">
+    
+      <div class="d-flex flex-row w-100 breadNav">
+        <div>
+          <p class="txtMainI">Factura</p>
+        </div>
+        <div>
+          <nav aria-label="breadcrumb ">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'inicio' %}">Inicio</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'factura-tfactura' %}">Factura</a></li>
+          </ol>
+          </nav>
+        </div>
+      </div>
+      <div class=" tablaProducto">
+        <table class="table bg-white table-bordered results" id="tabla_Factura">
+          <thead class="theadtable">
+            <tr class="text-white">
+              <th scope="col">ID</th>
+              <th scope="col">Rol</th>
+              <th scope="col">Nombre de usuario</th>
+              <th scope="col">Fecha</th>
+              <th scoper="col">Neto a pagar</th>
+              <th scope="col">Tipo de factura</th> 
+             
+              <th scope="col">Opciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for tfactura in tfacturas %}
+            {% if not tfactura.estado == "Anulada" %}
+            {% if tfactura.decision == "Activo" %}
+            <tr>
+              <td>{{tfactura.id}}</td>
+              <td>{{tfactura.rol}}</td>
+              <td>{{tfactura.usuario}}</td>
+              <td>{{tfactura.fecha}}</td>
+              <td>{{tfactura.neto_pagar}}</td>
+              <td>{{tfactura.tipofactura}}</td>
+              {% if tfactura.estado == "Abierta" %}
+                <td>
+                  <a  href="{% url 'factura-detalle' tfactura.id  %}"><img alt="Agregar productos" src="{% static 'img/png/plus-circle-fill.svg' %}" class="opcionesTabla" title="Agregar productos"></a>
+
+                  <a href="{% url 'factura_estado' tfactura.id tfactura.estado%}"><svg xmlns="http://www.w3.org/2000/svg"  fill="currentColor" class="opcionesTabla bi bi-trash" viewBox="0 0 16 16">
+                    <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                    <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                    <title> Eliminar factura </title>  
+                  </svg>
+              {% else %}
+                  <td>
+                  <a href="{% url 'factura-generarfactura' tfactura.id %}" target="_blank"><svg xmlns="http://www.w3.org/2000/svg"  fill="currentColor" class="opcionesTabla bi bi-receipt-cutoff" viewBox="0 0 16 16">
+                    <path d="M3 4.5a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zM11.5 4a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1zm0 2a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1zm0 2a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1zm0 2a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1zm0 2a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1z"/>
+                    <path d="M2.354.646a.5.5 0 0 0-.801.13l-.5 1A.5.5 0 0 0 1 2v13H.5a.5.5 0 0 0 0 1h15a.5.5 0 0 0 0-1H15V2a.5.5 0 0 0-.053-.224l-.5-1a.5.5 0 0 0-.8-.13L13 1.293l-.646-.647a.5.5 0 0 0-.708 0L11 1.293l-.646-.647a.5.5 0 0 0-.708 0L9 1.293 8.354.646a.5.5 0 0 0-.708 0L7 1.293 6.354.646a.5.5 0 0 0-.708 0L5 1.293 4.354.646a.5.5 0 0 0-.708 0L3 1.293 2.354.646zm-.217 1.198.51.51a.5.5 0 0 0 .707 0L4 1.707l.646.647a.5.5 0 0 0 .708 0L6 1.707l.646.647a.5.5 0 0 0 .708 0L8 1.707l.646.647a.5.5 0 0 0 .708 0L10 1.707l.646.647a.5.5 0 0 0 .708 0L12 1.707l.646.647a.5.5 0 0 0 .708 0l.509-.51.137.274V15H2V2.118l.137-.274z"/>
+                    <title> Generar factura </title>  
+                  </svg></a>
+                    
+               
+  
+                  <a href="{% url 'factura_eliminarA' tfactura.id%}"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="opcionesTabla bi bi-x-circle" viewBox="0 0 16 16">
+                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/><path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                    <title> Anular factura </title>  
+                  </svg>
+  
+                {% endif %}
+  
+              {% endif %}
+  
+              {% endif %} 
+              </td>
+              </tr>
+              
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+        <div class="iconosOpcion">
+         
+          <div class="agreproducto" title="Facturas anuladas">
+          <a href="{% url 'factura-facturai' %}"><svg xmlns="http://www.w3.org/2000/svg"class="iconos-tabla" fill="currentColor" class="bi bi-eye-slash" viewBox="0 0 16 16"  >
+            <path d="M13.359 11.238C15.06 9.72 16 8 16 8s-3-5.5-8-5.5a7.028 7.028 0 0 0-2.79.588l.77.771A5.944 5.944 0 0 1 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.134 13.134 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755-.165.165-.337.328-.517.486l.708.709z"/>
+            <path d="M11.297 9.176a3.5 3.5 0 0 0-4.474-4.474l.823.823a2.5 2.5 0 0 1 2.829 2.829l.822.822zm-2.943 1.299.822.822a3.5 3.5 0 0 1-4.474-4.474l.823.823a2.5 2.5 0 0 0 2.829 2.829z"/>
+            <path d="M3.35 5.47c-.18.16-.353.322-.518.487A13.134 13.134 0 0 0 1.172 8l.195.288c.335.48.83 1.12 1.465 1.755C4.121 11.332 5.881 12.5 8 12.5c.716 0 1.39-.133 2.02-.36l.77.772A7.029 7.029 0 0 1 8 13.5C3 13.5 0 8 0 8s.939-1.721 2.641-3.238l.708.709zm10.296 8.884-12-12 .708-.708 12 12-.708.708z title=" />
+          </svg></a> 
+          <p>Facturas<br>anuladas</p>
+        </div>
+         </div>
+      </div> 
+    </div>
+  </main>
+    </div>
+   </div>
+  </html>
+  
+  {% endblock contenido %}
+  
+  

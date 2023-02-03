@@ -1,0 +1,72 @@
+{% load static %}
+<link rel="stylesheet" href="css/bootstrap/bootstrap.min.css ">
+<script type="text/javascript" src="js/bootstrap.bundle.min.js"></script>
+
+<header>
+
+  <div class="headerInicio">
+    <div class="contenedorHeader">
+      <div class="cuadroH1 div-padre ">
+        <div class="div-hijo">
+          <img class="logoH1 mx-auto " src="{% static 'img/png/LOGO 16.png' %} " alt="" />
+        </div>
+      </div>
+      <div class="cuadroH2 tituloNav">
+        <h1 class="textoH2">Unidad Productiva <br />Tejidos y Variedades Tota</h1>
+        <div class="cuadroHI2-2">
+          <nav>
+            <ul >
+              <li class="nav-item  bdnavizquierda">
+                <a  href="{% url 'inicio' %}" class="nav-link active">Inicio</a>
+              </li>  
+              <li class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Usuarios</a>
+                <div class="dropdown-menu">
+                    <a href="{% url 'usuario-tablaUsuario' %}" class="itemd dropdown-item">Ver usuarios</a>
+                    <a href="{% url 'usuario-crearUsuario' %}" class="dropdown-item itemd">Crear usuario</a>
+                </div>
+              </li>
+              <li class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Productos</a>
+                <div class="dropdown-menu">
+                  <a href="{% url 'producto-producto' %}" class="dropdown-item itemd">Ver productos</a>
+                  <a href="{% url 'producto-crearproducto' %}" class="dropdown-item itemd">Crear productos</a>
+                  <a href="{% url 'producto-talla' %}" class="dropdown-item itemd">Crear talla</a>
+                  <a href="{% url 'producto-marca' %}" class="dropdown-item itemd">Crear marca</a>
+                  <a href="{% url 'producto-color' %}" class="dropdown-item itemd">Crear color</a>
+                </div>
+              </li>
+              <li class="nav-item  ">
+                <a  href="{% url 'factura-tfactura' %}" class="nav-link active">Facturas</a>
+              </li>
+              <li class="nav-item  bdnavderecha  ">
+                <a  href="{% url 'pago-tpago' %}" class="nav-link active">Pagos</a>
+              </li>
+         
+            </ul>
+          </nav>
+        </div>
+      </div>
+      
+      <div class="cuadroHI1-2">
+        <div  class="menu">
+            <div class="dropdown">
+              <button class="btn-w btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false"><img class="img-Botton" src= "{% static './img/png/list.svg' %}"alt="" srcset="">
+                
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" type="button" href="{% url 'usuario-logout' %}"><svg xmlns="http://www.w3.org/2000/svg" width="25" style="" fill="currentColor" class="bi bi-box-arrow-left" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0v2z"/>
+                  <path fill-rule="evenodd" d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"/>
+                </svg>   <span style="padding:18px">Cerrar sesión</span> </a>
+               <a class="dropdown-item"  href="{% url 'backup' tipo='A' %}" class="nav-link align-middle px-0 "><svg xmlns="http://www.w3.org/2000/svg" width="25" fill="currentColor" class="bi bi-folder-plus" viewBox="0 0 16 16">
+                  <path d="m.5 3 .04.87a1.99 1.99 0 0 0-.342 1.311l.637 7A2 2 0 0 0 2.826 14H9v-1H2.826a1 1 0 0 1-.995-.91l-.637-7A1 1 0 0 1 2.19 4h11.62a1 1 0 0 1 .996 1.09L14.54 8h1.005l.256-2.819A2 2 0 0 0 13.81 3H9.828a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 6.172 1H2.5a2 2 0 0 0-2 2zm5.672-1a1 1 0 0 1 .707.293L7.586 3H2.19c-.24 0-.47.042-.683.12L1.5 2.98a1 1 0 0 1 1-.98h3.672z"/>
+                  <path d="M13.5 10a.5.5 0 0 1 .5.5V12h1.5a.5.5 0 1 1 0 1H14v1.5a.5.5 0 1 1-1 0V13h-1.5a.5.5 0 0 1 0-1H13v-1.5a.5.5 0 0 1 .5-.5z"/>
+                </svg><span style="padding:18px">Copia de seguridad</span></a>
+              </div>
+            </div>  
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

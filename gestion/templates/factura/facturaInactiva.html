@@ -1,0 +1,84 @@
+{% extends 'partials/body.html' %}
+{% load crispy_forms_tags %}
+{% block tittle %} Crear factura {% endblock tittle %}
+{% load static %}
+{% block contenido %}
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<main class="mainU">
+<div class="contenedorMainU mx-auto">
+
+    <div class="navTablafactura">
+    
+      <div class="d-flex flex-row w-100 breadNav">
+        <div>
+          <p class="txtMainI">Factura</p>
+        </div>
+        <div>
+          <nav aria-label="breadcrumb ">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'inicio' %}">Inicio</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'factura-tfactura' %}">Factura</a></li>
+          </ol>
+          </nav>
+        </div>
+      </div>
+      <div class=" tablaProducto">
+        <table class="table bg-white table-bordered results" id="tabla_Factura">
+          <thead class="theadtable">
+            <tr class="text-white">
+              <th scope="col">ID</th>
+              <th scope="col">Rol</th>
+              <th scope="col">Nombre de usuario</th>
+              <th scope="col">Fecha</th>
+              <th scoper="col">Neto a pagar</th>
+              <th scope="col">Tipo de factura</th> 
+            </tr>
+          </thead>
+          <tbody>
+            {% for tfactura in tfacturas %}
+            {% if  tfactura.estado == "Anulada" %}
+            {% if tfactura.decision == "Inactivo" %}
+            <tr>
+              <td>{{tfactura.id}}</td>
+              <td>{{tfactura.rol}}</td>
+              <td>{{tfactura.usuario}}</td>
+              <td>{{tfactura.fecha}}</td>
+              <td>{{tfactura.neto_pagar}}</td>
+              <td>{{tfactura.tipofactura}}</td>
+      
+                
+           
+             {% endif %} 
+              {% endif %} 
+              </td>
+              </tr>
+              
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+        <div class="iconosOpcion">
+          <div class="agreproducto" title="Facturas ">
+            <a href="{% url 'factura-tfactura' %}"><svg xmlns="http://www.w3.org/2000/svg"class="iconos-tabla" fill="currentColor" class="bi bi-eye-slash" viewBox="0 0 16 16"  >
+              <path d="M13.359 11.238C15.06 9.72 16 8 16 8s-3-5.5-8-5.5a7.028 7.028 0 0 0-2.79.588l.77.771A5.944 5.944 0 0 1 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.134 13.134 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755-.165.165-.337.328-.517.486l.708.709z"/>
+              <path d="M11.297 9.176a3.5 3.5 0 0 0-4.474-4.474l.823.823a2.5 2.5 0 0 1 2.829 2.829l.822.822zm-2.943 1.299.822.822a3.5 3.5 0 0 1-4.474-4.474l.823.823a2.5 2.5 0 0 0 2.829 2.829z"/>
+              <path d="M3.35 5.47c-.18.16-.353.322-.518.487A13.134 13.134 0 0 0 1.172 8l.195.288c.335.48.83 1.12 1.465 1.755C4.121 11.332 5.881 12.5 8 12.5c.716 0 1.39-.133 2.02-.36l.77.772A7.029 7.029 0 0 1 8 13.5C3 13.5 0 8 0 8s.939-1.721 2.641-3.238l.708.709zm10.296 8.884-12-12 .708-.708 12 12-.708.708z title=" />
+            </svg></a> 
+            <p>Facturas</p>
+          </div>
+          
+         </div>
+      </div> 
+    </div>
+  </main>
+    </div>
+   </div>
+  </html>
+  
+  {% endblock contenido %}
+  
+  
